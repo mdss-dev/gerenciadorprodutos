@@ -1,4 +1,4 @@
-package com.md.gerenciadorprodutos.modelo;
+package com.md.gerenciadorprodutos.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

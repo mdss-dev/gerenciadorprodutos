@@ -1,4 +1,4 @@
-package com.md.gerenciadorprodutos.modelo;
+package com.md.gerenciadorprodutos.model;
 
     public enum CategoriaProduto {
         ELETRONICO("eletronico"), ELETRODOMESTICO("eletrodoméstico"),INFORMATICA("informática"),SMARTPHONE("smartphone");
