@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.naming.Binding;
-
 @Controller
 public class ProdutoController {
 
@@ -23,7 +21,7 @@ public class ProdutoController {
     // Acessa o formulario
     @GetMapping("/form")
     public String produtosForm(Produto produto){
-        return "addProdutosForm";
+        return "addProdutoForm";
     }
 
     // Adiciona novo produto

@@ -1,7 +1,7 @@
 package com.md.gerenciadorprodutos.model;
 
     public enum CategoriaProduto {
-        ELETRONICO("eletronico"), ELETRODOMESTICO("eletrodoméstico"),INFORMATICA("informática"),SMARTPHONE("smartphone");
+        ELETRONICO("eletronico"), ELETRODOMESTICO("eletrodomestico"),INFORMATICA("informatica"),SMARTPHONE("smartphone");
         private String value;
         private CategoriaProduto(String value){
             this.value = value;
