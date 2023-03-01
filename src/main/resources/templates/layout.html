@@ -21,13 +21,15 @@
         }
 
         body {
-            background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+            background: rgb(175,255,211);
+            background: linear-gradient(0deg, rgba(175,255,211,1) 0%, rgba(202,249,223,1) 24%, rgba(220,245,231,1) 40%, rgba(239,241,240,1) 57%, rgba(185,221,212,1) 68%, rgba(116,195,176,1) 82%, rgba(28,161,129,1) 100%);
         }
 
         label {
             font-family: 'Roboto', sans-serif;
             font-size: 1.5em;
         }
+
 
         .logo {
             margin-left: 15px;
@@ -40,14 +42,9 @@
 <div th:fragment="navbar">
     <nav
             class="navbar navbar-expand-lg mb-3 d-flex justify-content-between">
-<<<<<<< HEAD
-        <a class="logo" href="/home"><img src="https://icons.iconarchive.com/icons/tatice/cristal-intense/256/Java-icon.png" alt="" width="200" height="200" class="d-inline-row align-text-top"></a>
-=======
         <a class="logo" href="/home"><img
                 src="https://icons.iconarchive.com/icons/tatice/cristal-intense/256/Java-icon.png"
                 alt="" width="150" height="150" class="d-inline-row align-text-top"></a>
-
->>>>>>> development
         <ul class="nav">
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="/home">Home</a></li>
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="/listar">Listar</a></li>
