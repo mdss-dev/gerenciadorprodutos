@@ -1,5 +1,6 @@
 package com.md.gerenciadorprodutos.controller;
 
+import com.md.gerenciadorprodutos.model.CategoriaProduto;
 import com.md.gerenciadorprodutos.model.Produto;
 import com.md.gerenciadorprodutos.repository.ProdutoRepository;
 import jakarta.validation.Valid;
@@ -11,6 +12,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class ProdutoController {
@@ -42,6 +46,17 @@ public class ProdutoController {
         model.addAttribute("produto", produto);
         return "atualizaForm";
     }
+
+    // Busca por categoria
+
+    @GetMapping("/categoria")
+    public String categoria(@RequestParam String categoria, Model model){
+        CategoriaProduto categoriaProduto = CategoriaProduto.valueOf(categoria.toUpperCase());
+        List<Produto> produtos = produtoRepository.findByCategoria(categoriaProduto);
+        model.addAttribute("produtos", produtos);
+        return "categoria";
+    }
+
 
     // Atualiza produto
     @PostMapping("update/{id}")

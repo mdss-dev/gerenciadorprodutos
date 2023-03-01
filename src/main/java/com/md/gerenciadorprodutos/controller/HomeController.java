@@ -24,13 +24,18 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping
+    @GetMapping("/listar")
+    public String lista(Model model) {
+        List<Produto> produtos = produtoRepository.findAll();
+        model.addAttribute("produtos", produtos);
+        return "todosprodutos";
+    }
+    @GetMapping("/")
     public String categoria(@RequestParam String categoria, Model model) {
         CategoriaProduto categoriaProduto = CategoriaProduto.valueOf(categoria.toUpperCase());
         List<Produto> produtos = produtoRepository.findByCategoria(categoriaProduto);
-
         model.addAttribute("produtos", produtos);
-        return "home";
+        return "categoria";
     }
 
 }
