@@ -1,15 +1,18 @@
+
 <head th:replace="~{layout :: head}">
 </head>
-
 <body>
-
-
 <div th:replace="~{layout :: navbar}"></div>
+<h2>Buscar Produtos por Nome</h2>
 
+<form method="get" action="/buscarPorNome">
+  <label for="nome">Nome:</label>
+  <input type="text" id="nome" name="nome" required>
+  <button class="btn btn-dark" type="submit">Buscar</button>
+</form>
+<h3 th:if="${mensagem}"  th:text="${mensagem}"></h3>
 <div class="container mb-2">
-  <h1>Todos os Produtos cadastrados</h1>
-  <a href="/form"><button class="btn btn-dark">Adicionar Produto</button></a>
-  <table class="table table-light">
+  <table class="table table-light" th:if="${produtos}">
     <tr class="table-dark">
       <th></th>
       <th scope="col">ID</th>
@@ -33,7 +36,10 @@
            class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
     </tr>
   </table>
+  <div class="col-sm-5" th:if="${produtos}">
+    <a href="/form"><button class="btn btn-dark">Adicionar Produto</button></a>
+    <a href="/home" class="btn btn-dark">Home</a>
+  </div>
 </div>
 </body>
-
 </html>
