@@ -52,7 +52,7 @@ private final ProdutoService produtoService;
     // Acessa o formulario de edição
     @GetMapping("form/{id}")
     public String updateForm(Model model, @PathVariable(name = "id") int id) {
-        Optional<Produto> produto = produtoService.buscarPorId(id);
+        Produto produto = produtoService.buscarPorId(id);
         model.addAttribute("produto", produto);
         return "atualizaForm";
     }
@@ -61,8 +61,8 @@ private final ProdutoService produtoService;
 
     @GetMapping("/categoria")
     public String categoria(@RequestParam String categoria, Model model){
-        produtoService.categoria(categoria);
-        model.addAttribute("produtos", produtoService.categoria(categoria));
+        List<Produto> produtos = produtoService.categoria(categoria);
+        model.addAttribute("produtos", produtos);
         return "categoria";
     }
 
@@ -78,7 +78,7 @@ private final ProdutoService produtoService;
     }
 
     @PostMapping("update/{id}")
-    public String alterarProduto(@Valid Produto produto, BindingResult result){
+    public String alterarProduto(Produto produto, BindingResult result){
         if (result.hasErrors()) {
             return "redirect:/form";
         }

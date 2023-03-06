@@ -31,8 +31,8 @@ public List<Produto> categoria(String categoria){
     return produtos;
 }
 
-public Optional<Produto> buscarPorId (int id){
-   return produtoRepository.findById(id);
+public Produto buscarPorId (int id){
+    return produtoRepository.findById(id).get();
 }
 
 public List<Produto> buscarPorNome(String nome) {
