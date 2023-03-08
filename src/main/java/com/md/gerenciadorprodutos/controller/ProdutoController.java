@@ -1,34 +1,27 @@
 package com.md.gerenciadorprodutos.controller;
 
 import com.md.gerenciadorprodutos.model.Produto;
-import com.md.gerenciadorprodutos.repository.ProdutoRepository;
 import com.md.gerenciadorprodutos.service.ProdutoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
 public class ProdutoController {
 private final ProdutoService produtoService;
-    @Autowired
-    private ProdutoRepository produtoRepository;
 
     // Acessa o formulario
     @GetMapping("/form")
-    public String produtosForm(Produto produto){
+    public String produtosForm(@Valid Produto produto){
         return "addProdutoForm";
     }
 
@@ -61,8 +54,7 @@ private final ProdutoService produtoService;
 
     @GetMapping("/categoria")
     public String categoria(@RequestParam String categoria, Model model){
-        List<Produto> produtos = produtoService.categoria(categoria);
-        model.addAttribute("produtos", produtos);
+        model.addAttribute("produtos", produtoService.categoria(categoria));
         return "categoria";
     }
 
@@ -78,7 +70,7 @@ private final ProdutoService produtoService;
     }
 
     @PostMapping("update/{id}")
-    public String alterarProduto(Produto produto, BindingResult result){
+    public String alterarProduto(@Valid Produto produto, BindingResult result){
         if (result.hasErrors()) {
             return "redirect:/form";
         }
